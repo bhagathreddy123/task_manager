@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     if @task.save 
       redirect_to tasks_path
     else
-      render json: { errors: @tasks.errors.full_messages }, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to tasks_path
     else
-      render json: { errors: @task.errors.full_messages }, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

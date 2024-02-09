@@ -1,4 +1,8 @@
-<%= @task.id %>
-<%= @task.title %>
-<%= @task.description %>
-<%= @task.status %>
+<div class="row">
+  <div class="col-lg-12">
+    <p class="lead"><strong>Title:</strong><%= @task.title %></p>
+    <p class="lead"><strong>Description:</strong><%= @task.description %></p>
+    <p class="lead"><strong>Status:</strong><%= @task.status %></p>
+  </div>
+</div>
+<%= link_to "Back", tasks_path, class: "btn btn-info" %>

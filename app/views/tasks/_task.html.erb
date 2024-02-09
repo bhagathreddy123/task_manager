@@ -1,0 +1,10 @@
+<tr>
+  <td> <%= task.title %></td>
+  <td> <%= task.description %></td>
+  <td> <%= task.status %></td>
+  <td>
+    <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
+    <%= link_to "Show", task, class: "btn btn-success" %>
+    <%= link_to "Delete", task, data: {turbo_method: :delete, turbo_confirm: "Are You Sure?"}, class: "btn btn-danger" %>
+  </td>
+</tr>

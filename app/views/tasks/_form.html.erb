@@ -1,25 +1,32 @@
 <%= form_with(model: task) do |form| %>
-  <% if task.errors.any? %>
-    <div style="color: red">
-       <h2>
-          <%= pluralize(task.errors.count, "error")%>
-              prohibited this task from being saved:  
-          </h2>
-          <ul>
-            <% task.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-            <% end %>
-          </ul>   
+    <% if task.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, class: "form-label mb-2 mt-3" %>
+      <%= form.text_field :title, class: "form-control form-control-lg" %>
     </div>
-  <% end %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
 
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+    <div class="form-group">
+      <%= form.label :description, class: "form-label mb-2 mt-3" %>
+      <%= form.text_field :description, class: "form-control form-control-lg" %>
+    </div>
 
-  <%= form.label :status %>
-  <%= form.select :status, Task.statuses.keys %>
-
-  <%= form.submit %>
+    <div class="form-group">
+      <%= form.label :status, class: "form-label mb-2 mt-3" %>
+      <%= form.select :status, options_for_select([["todo","todo"],["in_progress","in_progress"],["done","done"]], :selected => form.object.status) %>
+    </div>
+  <div class="form-action">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
 <% end %>
+
+<%= link_to "Back", tasks_path, class: "btn btn-info" %>
